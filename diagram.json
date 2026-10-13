@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "author": "Motor Protection Project",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-st-nucleo-c031c6", "id": "nucleo", "top": 0, "left": 260, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot_speed", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot_current", "top": 110, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot_temp", "top": 219.5, "left": -0.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot_ref", "top": 330, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_start",
+      "top": 0,
+      "left": 620,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_stop",
+      "top": 90,
+      "left": 620,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_pwm",
+      "top": 190,
+      "left": 700,
+      "attrs": { "color": "orange" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led_pwm",
+      "top": 230,
+      "left": 660,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-led", "id": "led_en", "top": 250, "left": 700, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led_en",
+      "top": 290,
+      "left": 660,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-led", "id": "led_flt", "top": 310, "left": 700, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led_flt",
+      "top": 350,
+      "left": 660,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_run",
+      "top": 370,
+      "left": 700,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led_run",
+      "top": 410,
+      "left": 660,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_idle",
+      "top": 430,
+      "left": 700,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led_idle",
+      "top": 470,
+      "left": 660,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 500,
+      "left": 700,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "nucleo:A0", "pot_speed:SIG", "green", [] ],
+    [ "nucleo:3V3.2", "pot_speed:VCC", "red", [] ],
+    [ "nucleo:GND.9", "pot_speed:GND", "black", [] ],
+    [ "nucleo:A1", "pot_current:SIG", "green", [] ],
+    [ "nucleo:3V3.2", "pot_current:VCC", "red", [] ],
+    [ "nucleo:GND.9", "pot_current:GND", "black", [] ],
+    [ "nucleo:A2", "pot_temp:SIG", "green", [] ],
+    [ "nucleo:3V3.2", "pot_temp:VCC", "red", [] ],
+    [ "nucleo:GND.9", "pot_temp:GND", "black", [] ],
+    [ "nucleo:A3", "pot_ref:SIG", "green", [] ],
+    [ "nucleo:3V3.2", "pot_ref:VCC", "red", [] ],
+    [ "nucleo:GND.9", "pot_ref:GND", "black", [] ],
+    [ "nucleo:D2", "btn_start:1.l", "green", [] ],
+    [ "nucleo:GND.9", "btn_start:2.l", "black", [] ],
+    [ "nucleo:D4", "btn_stop:1.l", "green", [] ],
+    [ "nucleo:GND.9", "btn_stop:2.l", "black", [] ],
+    [ "nucleo:D5", "r_led_pwm:1", "green", [] ],
+    [ "r_led_pwm:2", "led_pwm:A", "green", [] ],
+    [ "led_pwm:C", "nucleo:GND.9", "black", [] ],
+    [ "nucleo:D6", "r_led_en:1", "green", [] ],
+    [ "r_led_en:2", "led_en:A", "green", [] ],
+    [ "led_en:C", "nucleo:GND.9", "black", [] ],
+    [ "nucleo:D7", "r_led_flt:1", "green", [] ],
+    [ "r_led_flt:2", "led_flt:A", "green", [] ],
+    [ "led_flt:C", "nucleo:GND.9", "black", [] ],
+    [ "nucleo:D9", "r_led_run:1", "green", [] ],
+    [ "r_led_run:2", "led_run:A", "green", [] ],
+    [ "led_run:C", "nucleo:GND.9", "black", [] ],
+    [ "nucleo:D10", "r_led_idle:1", "green", [] ],
+    [ "r_led_idle:2", "led_idle:A", "green", [] ],
+    [ "led_idle:C", "nucleo:GND.9", "black", [] ],
+    [ "nucleo:D8", "buzzer:2", "green", [] ],
+    [ "buzzer:1", "nucleo:GND.9", "black", [] ],
+    [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+    [ "$serialMonitor:TX", "nucleo:PA3", "", [] ]
+  ],
+  "dependencies": {}
+}
